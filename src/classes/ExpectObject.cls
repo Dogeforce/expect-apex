@@ -1,5 +1,4 @@
 public class ExpectObject extends Expect {
-
     private final Object expected;
 
     public ExpectObject(Object expected) {
@@ -29,14 +28,21 @@ public class ExpectObject extends Expect {
     }
 
     public ExpectObject shouldBeEquivalentTo(Object actual) {
-        return shouldBeEquivalentTo(actual, formatMessage(SHOULD_BE_MESSAGE, actual));
+        return shouldBeEquivalentTo(
+            actual,
+            formatMessage(SHOULD_BE_MESSAGE, actual)
+        );
     }
 
     public ExpectObject shouldBeEquivalentTo(Object actual, String message) {
         return assertThis(expected == actual, message);
     }
 
-    public ExpectObject andIt { get { return (ExpectObject) parentInstance; } }
+    public ExpectObject andIt {
+        get {
+            return (ExpectObject) parentInstance;
+        }
+    }
 
     public ExpectObject negated {
         get {

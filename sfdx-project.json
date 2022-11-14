@@ -1,12 +1,12 @@
 {
-  "packageDirectories": [
-    {
-      "path": "src",
-      "default": true
-    }
-  ],
-  "name": "expect-apex",
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "55.0"
+    "packageDirectories": [
+        {
+            "path": "src",
+            "default": true
+        }
+    ],
+    "name": "expect-apex",
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "55.0"
 }

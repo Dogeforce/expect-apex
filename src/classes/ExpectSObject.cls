@@ -3,7 +3,6 @@ public class ExpectSObject extends Expect {
 
     public ExpectSObject(SObject expected) {
         this.expected = expected;
-
     }
     private ExpectSObject(ExpectSObject existingInstance) {
         super(NegatedAssert, existingInstance);
@@ -14,7 +13,11 @@ public class ExpectSObject extends Expect {
         return String.valueOf(expected);
     }
 
-    public ExpectSObject andIt { get { return (ExpectSObject) parentInstance; } }
+    public ExpectSObject andIt {
+        get {
+            return (ExpectSObject) parentInstance;
+        }
+    }
 
     public ExpectSObject negated {
         get {
@@ -40,10 +43,16 @@ public class ExpectSObject extends Expect {
     }
 
     public ExpectSObject sObjectTypeEquals(SObjectType objType) {
-        return sObjectTypeEquals(objType, formatMessage(SHOULD_BE_MESSAGE, objType));
+        return sObjectTypeEquals(
+            objType,
+            formatMessage(SHOULD_BE_MESSAGE, objType)
+        );
     }
 
-    public ExpectSObject sObjectTypeEquals(SObjectType objType, String message) {
+    public ExpectSObject sObjectTypeEquals(
+        SObjectType objType,
+        String message
+    ) {
         return assertSObject(expected.getSObjectType() == objType, message);
     }
 
@@ -53,14 +62,20 @@ public class ExpectSObject extends Expect {
     }
 
     private ExpectError failDmlExpectation(string dmlOperationName) {
-        assertNegatable(false, 'Expected ' + String.valueOf(expected) + ' should error on ' + dmlOperationName);
+        assertNegatable(
+            false,
+            'Expected ' +
+            String.valueOf(expected) +
+            ' should error on ' +
+            dmlOperationName
+        );
         return null;
     }
 
     public ExpectError shouldHaveInsertError() {
         try {
             insert expected;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             return new ExpectError(ex);
         }
         return failDmlExpectation('insert');
@@ -69,7 +84,7 @@ public class ExpectSObject extends Expect {
     public ExpectError shouldHaveUpdateError() {
         try {
             update expected;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             return new ExpectError(ex);
         }
         return failDmlExpectation('update');
@@ -78,7 +93,7 @@ public class ExpectSObject extends Expect {
     public ExpectError shouldHaveUpsertError() {
         try {
             upsert expected;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             return new ExpectError(ex);
         }
         return failDmlExpectation('upsert');
@@ -87,7 +102,7 @@ public class ExpectSObject extends Expect {
     public ExpectError shouldHaveDeleteError() {
         try {
             delete expected;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             return new ExpectError(ex);
         }
         return failDmlExpectation('delete');

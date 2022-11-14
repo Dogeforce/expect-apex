@@ -22,8 +22,7 @@ public class ExpectBoolean_Tests {
 
     @isTest
     public static void ExpectShouldBeFalseForTrueThrowsSpecificMessage() {
-        new ShouldBeFalseThrows()
-            .verifyCustomMessage('False');
+        new ShouldBeFalseThrows().verifyCustomMessage('False');
     }
 
     @isTest
@@ -42,14 +41,12 @@ public class ExpectBoolean_Tests {
 
     @isTest
     public static void ExpectShouldBeTrueForFalseThrowsDefaultMessage() {
-        new ShouldBeTrueThrows()
-            .verifyMessage('Expected false should be true');
+        new ShouldBeTrueThrows().verifyMessage('Expected false should be true');
     }
 
     @isTest
     public static void ExpectShouldBeTrueForFalseThrowsSpecificMessage() {
-        new ShouldBeTrueThrows()
-            .verifyCustomMessage('Truth');
+        new ShouldBeTrueThrows().verifyCustomMessage('Truth');
     }
 
     @isTest
@@ -81,8 +78,7 @@ public class ExpectBoolean_Tests {
 
     @isTest
     public static void ExpectShouldEqualThrowsForMismatchSpecificMessage() {
-        new ShouldEqualThrows(true)
-            .verifyCustomMessage('Mismatched');
+        new ShouldEqualThrows(true).verifyCustomMessage('Mismatched');
     }
 
     @isTest
@@ -94,7 +90,8 @@ public class ExpectBoolean_Tests {
     @isTest
     public static void ExpectBooleanSupportsNegation() {
         Expect.that(true).negated.andIt.shouldBeTrue(); // andIt removes negation
-        Expect.that(true).negated.shouldBeFalse() // negation works
+        Expect.that(true)
+            .negated.shouldBeFalse() // negation works
             .shouldBeTrue(); // evaluating once removes negation
     }
 }

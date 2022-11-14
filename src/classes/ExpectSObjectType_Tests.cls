@@ -1,6 +1,8 @@
 @isTest
 public class ExpectSObjectType_Tests {
-    private static final ExpectSObjectType sObjectTypeExpectation = Expect.That(Schema.Account.SObjectType);
+    private static final ExpectSObjectType sObjectTypeExpectation = Expect.That(
+        Schema.Account.SObjectType
+    );
 
     @isTest
     static void ExpectShouldNotHaveRecordsDoesNotThrow() {
@@ -9,7 +11,7 @@ public class ExpectSObjectType_Tests {
 
     private class ShouldNotHaveRecordsThrows extends ThrowCheck {
         ShouldNotHaveRecordsThrows() {
-            insert new Account(Name='NewAccount');
+            insert new Account(Name = 'NewAccount');
         }
         protected override void testCase() {
             sObjectTypeExpectation.negated.shouldHaveRecords();
@@ -22,13 +24,16 @@ public class ExpectSObjectType_Tests {
 
     @isTest
     static void ExpectShouldNotHaveRecordsThrows() {
-        new ShouldNotHaveRecordsThrows().verifyMessage('Expected Account should not have records');
-        new ShouldNotHaveRecordsThrows().verifyCustomMessage('No records should be found!');
+        new ShouldNotHaveRecordsThrows()
+            .verifyMessage('Expected Account should not have records');
+        new ShouldNotHaveRecordsThrows()
+            .verifyCustomMessage('No records should be found!');
     }
 
     @isTest
     static void ExpectShouldHaveRecordsDoesNotThrow() {
-        new ExpectSObjectType(Schema.Account.SObjectType).negated.shouldHaveRecords();
+        new ExpectSObjectType(Schema.Account.SObjectType)
+            .negated.shouldHaveRecords();
     }
 
     private class ShouldHaveRecordsThrows extends ThrowCheck {
@@ -43,7 +48,9 @@ public class ExpectSObjectType_Tests {
 
     @isTest
     static void ExpectShouldHaveRecordsThrows() {
-        new ShouldHaveRecordsThrows().verifyMessage('Expected Account should have records');
-        new ShouldHaveRecordsThrows().verifyCustomMessage('Records should be found!');
+        new ShouldHaveRecordsThrows()
+            .verifyMessage('Expected Account should have records');
+        new ShouldHaveRecordsThrows()
+            .verifyCustomMessage('Records should be found!');
     }
 }

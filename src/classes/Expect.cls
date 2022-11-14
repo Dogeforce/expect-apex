@@ -1,6 +1,7 @@
 public abstract class Expect {
     public class ExpectNegation {
-        private ExpectNegation() {}
+        private ExpectNegation() {
+        }
     }
     public static Boolean UseSystemAssert = true;
     public static final String SHOULD_BE_MESSAGE = 'Expected {0} {1} be {2}';
@@ -33,11 +34,12 @@ public abstract class Expect {
         }
     }
 
-    public class AssertException extends System.Exception {}
+    public class AssertException extends System.Exception {
+    }
 
     protected void assertNegatable(Boolean testResult, String message) {
         Boolean expected = negate ? !testResult : testResult;
-        if(UseSystemAssert) {
+        if (UseSystemAssert) {
             System.assert(expected, message);
         } else if (!expected) {
             throw new Expect.AssertException(message);
@@ -84,24 +86,37 @@ public abstract class Expect {
         return expectedMessage(formatString, actual, shouldOrShouldNot);
     }
 
-    protected String expectedShouldBeBetweenMessage(Object beginRange, Object endRange) {
-        return String.format(SHOULD_BE_BETWEEN_MESSAGE, new String[] {
-            this.getExpectedAsString(),
-            shouldOrShouldNot,
-            String.valueOf(beginRange),
-            String.valueOf(endRange)
-        });
+    protected String expectedShouldBeBetweenMessage(
+        Object beginRange,
+        Object endRange
+    ) {
+        return String.format(
+            SHOULD_BE_BETWEEN_MESSAGE,
+            new List<String>{
+                this.getExpectedAsString(),
+                shouldOrShouldNot,
+                String.valueOf(beginRange),
+                String.valueOf(endRange)
+            }
+        );
     }
 
     private String expectedMessage(Object actual, String delimiter) {
         return expectedMessage(SHOULD_BE_MESSAGE, actual, delimiter);
     }
 
-    private String expectedMessage(String formatString, Object actual, String delimiter) {
-        return String.format(formatString, new String[] {
-            this.getExpectedAsString(),
-            delimiter,
-            String.valueOf(actual)
-        });
+    private String expectedMessage(
+        String formatString,
+        Object actual,
+        String delimiter
+    ) {
+        return String.format(
+            formatString,
+            new List<String>{
+                this.getExpectedAsString(),
+                delimiter,
+                String.valueOf(actual)
+            }
+        );
     }
 }

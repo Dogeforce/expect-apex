@@ -1,6 +1,8 @@
 @isTest
 public class ExpectSObject_Tests {
-    private static Account getAccount() { return new Account(); }
+    private static Account getAccount() {
+        return new Account();
+    }
 
     @isTest
     static void ExpectShouldEqualShouldNotThrowForSameSObject() {
@@ -27,7 +29,8 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldThrowWhenShouldEqualIsCalledForNonEqualSObjects() {
-        new NonEqualObjectShouldThrowForEqual().verifyMessage('Expected Account:{} should be Account:{}');
+        new NonEqualObjectShouldThrowForEqual()
+            .verifyMessage('Expected Account:{} should be Account:{}');
         new NonEqualObjectShouldThrowForEqual().verifyCustomMessage('Hello');
     }
 
@@ -55,8 +58,10 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldThrowForNotEqualForTwoEqualSObjects() {
-        new EqualObjectShouldThrowForNotEqual().verifyMessage('Expected Account:{} should not be Account:{}');
-        new EqualObjectShouldThrowForNotEqual().verifyCustomMessage('yes,hello');
+        new EqualObjectShouldThrowForNotEqual()
+            .verifyMessage('Expected Account:{} should not be Account:{}');
+        new EqualObjectShouldThrowForNotEqual()
+            .verifyCustomMessage('yes,hello');
     }
 
     @isTest
@@ -71,14 +76,17 @@ public class ExpectSObject_Tests {
         }
 
         protected override void testCase(String message) {
-            Expect.that(new Contact()).sObjectTypeEquals(account.getSObjectType(), message);
+            Expect.that(new Contact())
+                .sObjectTypeEquals(account.getSObjectType(), message);
         }
     }
 
     @isTest
     static void ExpectShouldThrowExceptionForDifferentSObjectTypesForEquals() {
-        new DifferentSObjectTypes().verifyMessage('Expected Contact:{} should be Account');
-        new DifferentSObjectTypes().verifyCustomMessage('Should throw for different SObjectTypes!');
+        new DifferentSObjectTypes()
+            .verifyMessage('Expected Contact:{} should be Account');
+        new DifferentSObjectTypes()
+            .verifyCustomMessage('Should throw for different SObjectTypes!');
     }
 
     @isTest
@@ -130,12 +138,17 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldHaveInsertErrorThrows() {
-        Account validAccount = new Account(Name='Name');
-        ThrowCheck throwCheckInstance = new ShouldHaveInsertErrorThrows(validAccount);
+        Account validAccount = new Account(Name = 'Name');
+        ThrowCheck throwCheckInstance = new ShouldHaveInsertErrorThrows(
+            validAccount
+        );
 
         Expect.that(throwCheckInstance.verify())
-            .shouldEqual('Expected ' + String.valueOf(validAccount) +
-                         ' should error on insert');
+            .shouldEqual(
+                'Expected ' +
+                String.valueOf(validAccount) +
+                ' should error on insert'
+            );
     }
 
     class ShouldHaveInsertErrorWithExpectStringThrows extends ThrowCheck {
@@ -154,9 +167,11 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldHaveInsertErrorWithExpectStringThrows() {
-        String message = new ShouldHaveInsertErrorWithExpectStringThrows().verify();
+        String message = new ShouldHaveInsertErrorWithExpectStringThrows()
+            .verify();
         Expect.that(message.startsWith('Expected')).shouldBeTrue();
-        Expect.that(message.endsWith('should contain ExpectSObject_Tests.cls')).shouldBeTrue();
+        Expect.that(message.endsWith('should contain ExpectSObject_Tests.cls'))
+            .shouldBeTrue();
     }
 
     @isTest
@@ -180,14 +195,18 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldHaveUpsertErrorThrows() {
-        Account validAccount = new Account(Name='Name');
-        ThrowCheck throwCheckInstance = new ShouldHaveUpsertErrorThrows(validAccount);
+        Account validAccount = new Account(Name = 'Name');
+        ThrowCheck throwCheckInstance = new ShouldHaveUpsertErrorThrows(
+            validAccount
+        );
 
         Expect.that(throwCheckInstance.verify())
-            .shouldEqual('Expected ' + String.valueOf(validAccount) +
-                         ' should error on upsert');
+            .shouldEqual(
+                'Expected ' +
+                String.valueOf(validAccount) +
+                ' should error on upsert'
+            );
     }
-
 
     @isTest
     static void ExpectShouldHaveUpdateErrorDoesNotThrow() {
@@ -210,14 +229,19 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldHaveUpdateErrorThrows() {
-        Account validAccount = new Account(Name='Name');
+        Account validAccount = new Account(Name = 'Name');
         insert validAccount;
 
-        ThrowCheck throwCheckInstance = new ShouldHaveUpdateErrorThrows(validAccount);
+        ThrowCheck throwCheckInstance = new ShouldHaveUpdateErrorThrows(
+            validAccount
+        );
 
         Expect.that(throwCheckInstance.verify())
-            .shouldEqual('Expected ' + String.valueOf(validAccount) +
-                         ' should error on update');
+            .shouldEqual(
+                'Expected ' +
+                String.valueOf(validAccount) +
+                ' should error on update'
+            );
     }
 
     @isTest
@@ -241,13 +265,18 @@ public class ExpectSObject_Tests {
 
     @isTest
     static void ExpectShouldHaveDeleteErrorThrows() {
-        Account validAccount = new Account(Name='Name');
+        Account validAccount = new Account(Name = 'Name');
         insert validAccount;
 
-        ThrowCheck throwCheckInstance = new ShouldHaveDeleteErrorThrows(validAccount);
+        ThrowCheck throwCheckInstance = new ShouldHaveDeleteErrorThrows(
+            validAccount
+        );
 
         Expect.that(throwCheckInstance.verify())
-            .shouldEqual('Expected ' + String.valueOf(validAccount) +
-                         ' should error on delete');
+            .shouldEqual(
+                'Expected ' +
+                String.valueOf(validAccount) +
+                ' should error on delete'
+            );
     }
 }

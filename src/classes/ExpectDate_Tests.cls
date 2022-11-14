@@ -1,8 +1,8 @@
 @isTest
 public class ExpectDate_Tests {
-    private static final Date DATE_LOWEST = Date.newInstance(2001, 03, 01);
-    private static final Date DATE_MIDDLE = Date.newInstance(2001, 03, 02);
-    private static final Date DATE_HIGHEST = Date.newInstance(2001, 03, 03);
+    private static final Date DATE_LOWEST = Date.newInstance(2001, 3, 1);
+    private static final Date DATE_MIDDLE = Date.newInstance(2001, 3, 2);
+    private static final Date DATE_HIGHEST = Date.newInstance(2001, 3, 3);
     private static final String DATE_LOWEST_S = String.valueOf(DATE_LOWEST);
     private static final String DATE_MIDDLE_S = String.valueOf(DATE_MIDDLE);
     private static final String DATE_HIGHEST_S = String.valueOf(DATE_HIGHEST);
@@ -24,13 +24,17 @@ public class ExpectDate_Tests {
     @isTest
     static void ExpectShouldEqualThrowsDefaultMessage() {
         new ShouldEqualThrows()
-            .verifyMessage('Expected ' + DATE_LOWEST_S + ' should be ' + DATE_MIDDLE_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_LOWEST_S +
+                ' should be ' +
+                DATE_MIDDLE_S
+            );
     }
 
     @isTest
     static void ExpectShouldEqualThrowsSpecificMessage() {
-        new ShouldEqualThrows()
-            .verifyCustomMessage('Unequal');
+        new ShouldEqualThrows().verifyCustomMessage('Unequal');
     }
 
     @isTest
@@ -50,13 +54,17 @@ public class ExpectDate_Tests {
     @isTest
     static void ExpectShouldNotEqualThrowsDefaultMessage() {
         new ShouldNotEqualThrows()
-            .verifyMessage('Expected ' + DATE_LOWEST_S + ' should not be ' + DATE_LOWEST_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_LOWEST_S +
+                ' should not be ' +
+                DATE_LOWEST_S
+            );
     }
 
     @isTest
     static void ExpectShouldNotEqualThrowsSpecificMessage() {
-        new ShouldNotEqualThrows()
-            .verifyCustomMessage('equaled');
+        new ShouldNotEqualThrows().verifyCustomMessage('equaled');
     }
 
     @isTest
@@ -66,7 +74,8 @@ public class ExpectDate_Tests {
 
     @isTest
     static void ExpectShouldBeLessThanNegatedDoesNotThrow() {
-        Expect.that(DATE_MIDDLE).negated.shouldBeLessThan(DATE_LOWEST)
+        Expect.that(DATE_MIDDLE)
+            .negated.shouldBeLessThan(DATE_LOWEST)
             .andIt.shouldBeLessThan(DATE_HIGHEST);
     }
 
@@ -82,13 +91,17 @@ public class ExpectDate_Tests {
     @isTest
     static void ExpectShouldBeLessThanThrowsDefaultMessage() {
         new ShouldBeLessThanThrows()
-            .verifyMessage('Expected ' + DATE_MIDDLE_S + ' should be less than ' + DATE_LOWEST_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_MIDDLE_S +
+                ' should be less than ' +
+                DATE_LOWEST_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeLessThanThrowsCustomMessage() {
-        new ShouldBeLessThanThrows()
-            .verifyCustomMessage('too high');
+        new ShouldBeLessThanThrows().verifyCustomMessage('too high');
     }
 
     @isTest
@@ -102,20 +115,25 @@ public class ExpectDate_Tests {
             Expect.that(DATE_MIDDLE).shouldBeLessThanOrEqualTo(DATE_LOWEST);
         }
         protected override void testCase(String message) {
-            Expect.that(DATE_MIDDLE).shouldBeLessThanOrEqualTo(DATE_LOWEST, message);
+            Expect.that(DATE_MIDDLE)
+                .shouldBeLessThanOrEqualTo(DATE_LOWEST, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeLessThanOrEqualToThrowsDefaultMessage() {
         new ShouldBeLessThanOrEqualToThrows()
-            .verifyMessage('Expected ' + DATE_MIDDLE_S + ' should be less than or equal to ' + DATE_LOWEST_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_MIDDLE_S +
+                ' should be less than or equal to ' +
+                DATE_LOWEST_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeLessThanOrEqualToThrowsCustomMessage() {
-        new ShouldBeLessThanOrEqualToThrows()
-            .verifyCustomMessage('too high');
+        new ShouldBeLessThanOrEqualToThrows().verifyCustomMessage('too high');
     }
 
     @isTest
@@ -135,13 +153,17 @@ public class ExpectDate_Tests {
     @isTest
     static void ExpectShouldBeGreaterThanThrowsDefaultMessage() {
         new ShouldBeGreaterThanThrows()
-            .verifyMessage('Expected ' + DATE_LOWEST_S + ' should be greater than '+ DATE_MIDDLE_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_LOWEST_S +
+                ' should be greater than ' +
+                DATE_MIDDLE_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeGreaterThanThrowsSpecificMessage() {
-        new ShouldBeGreaterThanThrows()
-            .verifyCustomMessage('too low');
+        new ShouldBeGreaterThanThrows().verifyCustomMessage('too low');
     }
 
     @isTest
@@ -155,20 +177,25 @@ public class ExpectDate_Tests {
             Expect.that(DATE_LOWEST).shouldBeGreaterThanOrEqualTo(DATE_MIDDLE);
         }
         protected override void testCase(String message) {
-            Expect.that(DATE_LOWEST).shouldBeGreaterThanOrEqualTo(DATE_MIDDLE, message);
+            Expect.that(DATE_LOWEST)
+                .shouldBeGreaterThanOrEqualTo(DATE_MIDDLE, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeGreaterThanOrEqualToThrowsDefaultMessage() {
         new ShouldBeGreaterThanOrEqualToThrows()
-            .verifyMessage('Expected ' + DATE_LOWEST_S + ' should be greater than or equal to ' + DATE_MIDDLE_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_LOWEST_S +
+                ' should be greater than or equal to ' +
+                DATE_MIDDLE_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeGreaterThanOrEqualToThrowsSpecificMessage() {
-        new ShouldBeGreaterThanOrEqualToThrows()
-            .verifyCustomMessage('too low');
+        new ShouldBeGreaterThanOrEqualToThrows().verifyCustomMessage('too low');
     }
 
     @isTest
@@ -184,14 +211,22 @@ public class ExpectDate_Tests {
             Expect.that(DATE_LOWEST).shouldBeBetween(DATE_MIDDLE, DATE_HIGHEST);
         }
         protected override void testCase(String message) {
-            Expect.that(DATE_LOWEST).shouldBeBetween(DATE_MIDDLE, DATE_HIGHEST, message);
+            Expect.that(DATE_LOWEST)
+                .shouldBeBetween(DATE_MIDDLE, DATE_HIGHEST, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeBetweenThrowsThrowsDefaultMessage() {
         new ShouldBeBetweenThrows()
-            .verifyMessage('Expected ' + DATE_LOWEST_S + ' should be between ' + DATE_MIDDLE_S + ' and ' + DATE_HIGHEST_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_LOWEST_S +
+                ' should be between ' +
+                DATE_MIDDLE_S +
+                ' and ' +
+                DATE_HIGHEST_S
+            );
     }
 
     @isTest
@@ -202,17 +237,26 @@ public class ExpectDate_Tests {
 
     private class ShouldNotBeBetweenThrows extends ThrowCheck {
         protected override void testCase() {
-            Expect.that(DATE_MIDDLE).negated.shouldBeBetween(DATE_LOWEST, DATE_HIGHEST);
+            Expect.that(DATE_MIDDLE)
+                .negated.shouldBeBetween(DATE_LOWEST, DATE_HIGHEST);
         }
         protected override void testCase(String message) {
-            Expect.that(DATE_MIDDLE).negated.shouldBeBetween(DATE_LOWEST, DATE_HIGHEST, message);
+            Expect.that(DATE_MIDDLE)
+                .negated.shouldBeBetween(DATE_LOWEST, DATE_HIGHEST, message);
         }
     }
 
     @isTest
     static void ExpectShouldNotBeBetweenThrowsThrowsDefaultMessage() {
         new ShouldNotBeBetweenThrows()
-            .verifyMessage('Expected ' + DATE_MIDDLE_S + ' should not be between ' + DATE_LOWEST_S + ' and ' + DATE_HIGHEST_S);
+            .verifyMessage(
+                'Expected ' +
+                DATE_MIDDLE_S +
+                ' should not be between ' +
+                DATE_LOWEST_S +
+                ' and ' +
+                DATE_HIGHEST_S
+            );
     }
 
     @isTest
@@ -223,8 +267,8 @@ public class ExpectDate_Tests {
 
     @isTest
     static void ExpectDateChains() {
-        Expect.that(DATE_LOWEST).shouldBeLessThan(DATE_MIDDLE)
+        Expect.that(DATE_LOWEST)
+            .shouldBeLessThan(DATE_MIDDLE)
             .andit.shouldEqual(DATE_LOWEST);
     }
-
 }

@@ -11,15 +11,13 @@ public class ExpectError_Tests {
     @isTest
     static void ExpectErrorShouldExposeErrorMessageAsExpectString() {
         ExpectError wrappedError = new ExpectError(nullPtr);
-        wrappedError.andErrorMessage
-            .shouldEqual(nullPtr.getMessage());
+        wrappedError.andErrorMessage.shouldEqual(nullPtr.getMessage());
     }
 
     @isTest
     static void ExpectErrorShouldExposeErrorTypeAsExpectString() {
         ExpectError wrappedError = new ExpectError(nullPtr);
-        wrappedError.andErrorType
-            .shouldEqual(nullPtr.getTypeName());
+        wrappedError.andErrorType.shouldEqual(nullPtr.getTypeName());
     }
 
     @isTest
@@ -33,11 +31,10 @@ public class ExpectError_Tests {
     static void ExpectErrorShouldNegate() {
         new ExpectError(nullPtr)
             .andErrorType
-                .negated.shouldEqual('assemble')
-                .shouldEqual(nullPtr.getTypeName()) // verify negation lasts for 1 assert
+            .negated.shouldEqual('assemble')
+            .shouldEqual(nullPtr.getTypeName()) // verify negation lasts for 1 assert
             .andErrorMessage
-                .negated.shouldEqual('shuffle')
-                .shouldEqual(nullPtr.getMessage()); // verify negation lasts for 1 assert
+            .negated.shouldEqual('shuffle')
+            .shouldEqual(nullPtr.getMessage()); // verify negation lasts for 1 assert
     }
-
 }

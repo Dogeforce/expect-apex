@@ -12,7 +12,11 @@ public class ExpectBoolean extends Expect {
         return String.valueOf(expected);
     }
 
-    public ExpectBoolean andIt { get { return (ExpectBoolean) parentInstance; } }
+    public ExpectBoolean andIt {
+        get {
+            return (ExpectBoolean) parentInstance;
+        }
+    }
 
     public ExpectBoolean shouldBeFalse() {
         return shouldEqual(false);
@@ -43,5 +47,4 @@ public class ExpectBoolean extends Expect {
             return new ExpectBoolean(this);
         }
     }
-
 }

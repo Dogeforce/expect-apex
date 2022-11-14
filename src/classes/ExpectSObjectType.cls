@@ -12,7 +12,11 @@ public class ExpectSObjectType extends Expect {
         return String.valueOf(expected);
     }
     private Boolean isRecord() {
-        SObject[] records = Database.query('select Id from ' + expected.getDescribe().getName() + ' LIMIT 1');
+        SObject[] records = Database.query(
+            'select Id from ' +
+            expected.getDescribe().getName() +
+            ' LIMIT 1'
+        );
         return records.size() > 0;
     }
     public ExpectSObjectType shouldHaveRecords() {
@@ -23,6 +27,14 @@ public class ExpectSObjectType extends Expect {
         assertNegatable(isRecord(), message);
         return (ExpectSObjectType) parentInstance;
     }
-    public ExpectSObjectType andIt { get { return (ExpectSObjectType) parentInstance; } }
-    public ExpectSObjectType negated { get { return new ExpectSObjectType(this); }}
+    public ExpectSObjectType andIt {
+        get {
+            return (ExpectSObjectType) parentInstance;
+        }
+    }
+    public ExpectSObjectType negated {
+        get {
+            return new ExpectSObjectType(this);
+        }
+    }
 }

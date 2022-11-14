@@ -24,13 +24,17 @@ public class ExpectId_Tests {
     @isTest
     static void ExpectShouldEqualThrowsDefaultMessage() {
         new ShouldEqualThrows()
-            .verifyMessage('Expected ' + ID_LOWEST_S + ' should be ' + ID_MIDDLE_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_LOWEST_S +
+                ' should be ' +
+                ID_MIDDLE_S
+            );
     }
 
     @isTest
     static void ExpectShouldEqualThrowsSpecificMessage() {
-        new ShouldEqualThrows()
-            .verifyCustomMessage('Unequal');
+        new ShouldEqualThrows().verifyCustomMessage('Unequal');
     }
 
     @isTest
@@ -50,13 +54,17 @@ public class ExpectId_Tests {
     @isTest
     static void ExpectShouldNotEqualThrowsDefaultMessage() {
         new ShouldNotEqualThrows()
-            .verifyMessage('Expected ' + ID_LOWEST_S + ' should not be ' + ID_LOWEST_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_LOWEST_S +
+                ' should not be ' +
+                ID_LOWEST_S
+            );
     }
 
     @isTest
     static void ExpectShouldNotEqualThrowsSpecificMessage() {
-        new ShouldNotEqualThrows()
-            .verifyCustomMessage('equaled');
+        new ShouldNotEqualThrows().verifyCustomMessage('equaled');
     }
 
     @isTest
@@ -66,7 +74,8 @@ public class ExpectId_Tests {
 
     @isTest
     static void ExpectShouldBeLessThanNegatedDoesNotThrow() {
-        Expect.that(ID_MIDDLE).negated.shouldBeLessThan(ID_LOWEST)
+        Expect.that(ID_MIDDLE)
+            .negated.shouldBeLessThan(ID_LOWEST)
             .andIt.shouldBeLessThan(ID_HIGHEST);
     }
 
@@ -82,13 +91,17 @@ public class ExpectId_Tests {
     @isTest
     static void ExpectShouldBeLessThanThrowsDefaultMessage() {
         new ShouldBeLessThanThrows()
-            .verifyMessage('Expected ' + ID_MIDDLE_S + ' should be less than ' + ID_LOWEST_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_MIDDLE_S +
+                ' should be less than ' +
+                ID_LOWEST_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeLessThanThrowsCustomMessage() {
-        new ShouldBeLessThanThrows()
-            .verifyCustomMessage('too high');
+        new ShouldBeLessThanThrows().verifyCustomMessage('too high');
     }
 
     @isTest
@@ -102,20 +115,25 @@ public class ExpectId_Tests {
             Expect.that(ID_MIDDLE).shouldBeLessThanOrEqualTo(ID_LOWEST);
         }
         protected override void testCase(String message) {
-            Expect.that(ID_MIDDLE).shouldBeLessThanOrEqualTo(ID_LOWEST, message);
+            Expect.that(ID_MIDDLE)
+                .shouldBeLessThanOrEqualTo(ID_LOWEST, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeLessThanOrEqualToThrowsDefaultMessage() {
         new ShouldBeLessThanOrEqualToThrows()
-            .verifyMessage('Expected ' + ID_MIDDLE_S + ' should be less than or equal to ' + ID_LOWEST_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_MIDDLE_S +
+                ' should be less than or equal to ' +
+                ID_LOWEST_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeLessThanOrEqualToThrowsCustomMessage() {
-        new ShouldBeLessThanOrEqualToThrows()
-            .verifyCustomMessage('too high');
+        new ShouldBeLessThanOrEqualToThrows().verifyCustomMessage('too high');
     }
 
     @isTest
@@ -135,13 +153,17 @@ public class ExpectId_Tests {
     @isTest
     static void ExpectShouldBeGreaterThanThrowsDefaultMessage() {
         new ShouldBeGreaterThanThrows()
-            .verifyMessage('Expected ' + ID_LOWEST_S + ' should be greater than '+ ID_MIDDLE_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_LOWEST_S +
+                ' should be greater than ' +
+                ID_MIDDLE_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeGreaterThanThrowsSpecificMessage() {
-        new ShouldBeGreaterThanThrows()
-            .verifyCustomMessage('too low');
+        new ShouldBeGreaterThanThrows().verifyCustomMessage('too low');
     }
 
     @isTest
@@ -155,20 +177,25 @@ public class ExpectId_Tests {
             Expect.that(ID_LOWEST).shouldBeGreaterThanOrEqualTo(ID_MIDDLE);
         }
         protected override void testCase(String message) {
-            Expect.that(ID_LOWEST).shouldBeGreaterThanOrEqualTo(ID_MIDDLE, message);
+            Expect.that(ID_LOWEST)
+                .shouldBeGreaterThanOrEqualTo(ID_MIDDLE, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeGreaterThanOrEqualToThrowsDefaultMessage() {
         new ShouldBeGreaterThanOrEqualToThrows()
-            .verifyMessage('Expected ' + ID_LOWEST_S + ' should be greater than or equal to ' + ID_MIDDLE_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_LOWEST_S +
+                ' should be greater than or equal to ' +
+                ID_MIDDLE_S
+            );
     }
 
     @isTest
     static void ExpectShouldBeGreaterThanOrEqualToThrowsSpecificMessage() {
-        new ShouldBeGreaterThanOrEqualToThrows()
-            .verifyCustomMessage('too low');
+        new ShouldBeGreaterThanOrEqualToThrows().verifyCustomMessage('too low');
     }
 
     @isTest
@@ -184,14 +211,22 @@ public class ExpectId_Tests {
             Expect.that(ID_LOWEST).shouldBeBetween(ID_MIDDLE, ID_HIGHEST);
         }
         protected override void testCase(String message) {
-            Expect.that(ID_LOWEST).shouldBeBetween(ID_MIDDLE, ID_HIGHEST, message);
+            Expect.that(ID_LOWEST)
+                .shouldBeBetween(ID_MIDDLE, ID_HIGHEST, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeBetweenThrowsThrowsDefaultMessage() {
         new ShouldBeBetweenThrows()
-            .verifyMessage('Expected ' + ID_LOWEST_S + ' should be between ' + ID_MIDDLE_S + ' and ' + ID_HIGHEST_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_LOWEST_S +
+                ' should be between ' +
+                ID_MIDDLE_S +
+                ' and ' +
+                ID_HIGHEST_S
+            );
     }
 
     @isTest
@@ -202,17 +237,26 @@ public class ExpectId_Tests {
 
     private class ShouldNotBeBetweenThrows extends ThrowCheck {
         protected override void testCase() {
-            Expect.that(ID_MIDDLE).negated.shouldBeBetween(ID_LOWEST, ID_HIGHEST);
+            Expect.that(ID_MIDDLE)
+                .negated.shouldBeBetween(ID_LOWEST, ID_HIGHEST);
         }
         protected override void testCase(String message) {
-            Expect.that(ID_MIDDLE).negated.shouldBeBetween(ID_LOWEST, ID_HIGHEST, message);
+            Expect.that(ID_MIDDLE)
+                .negated.shouldBeBetween(ID_LOWEST, ID_HIGHEST, message);
         }
     }
 
     @isTest
     static void ExpectShouldNotBeBetweenThrowsThrowsDefaultMessage() {
         new ShouldNotBeBetweenThrows()
-            .verifyMessage('Expected ' + ID_MIDDLE_S + ' should not be between ' + ID_LOWEST_S + ' and ' + ID_HIGHEST_S);
+            .verifyMessage(
+                'Expected ' +
+                ID_MIDDLE_S +
+                ' should not be between ' +
+                ID_LOWEST_S +
+                ' and ' +
+                ID_HIGHEST_S
+            );
     }
 
     @isTest
@@ -223,8 +267,8 @@ public class ExpectId_Tests {
 
     @isTest
     static void ExpectIdChains() {
-        Expect.that(ID_LOWEST).shouldBeLessThan(ID_MIDDLE)
+        Expect.that(ID_LOWEST)
+            .shouldBeLessThan(ID_MIDDLE)
             .andit.shouldEqual(ID_LOWEST);
     }
-
 }

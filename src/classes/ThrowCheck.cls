@@ -7,7 +7,7 @@ public abstract class ThrowCheck {
         try {
             testCase();
             System.assert(false, ASSERTION_MESSAGE);
-        } catch(Expect.AssertException exceptionValue) {
+        } catch (Expect.AssertException exceptionValue) {
             return exceptionValue.getMessage();
         }
         return null;
@@ -20,7 +20,7 @@ public abstract class ThrowCheck {
         try {
             testCase(expectedMessage);
             System.assert(false, ASSERTION_MESSAGE);
-        } catch(Expect.AssertException exceptionValue) {
+        } catch (Expect.AssertException exceptionValue) {
             System.assertEquals(expectedMessage, exceptionValue.getMessage());
         }
     }

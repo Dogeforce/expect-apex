@@ -20,7 +20,8 @@ public class ExpectObject_Tests {
     @isTest
     static void ExpectObjectsWithSameReferenceShouldNotThrowForStrictEquals() {
         Expect.that(EqualsOneInstanceA).shouldEqual(EqualsOneInstanceA);
-        Expect.that(EqualsOneInstanceA).shouldEqual(EqualsOneInstanceA, 'ShouldEqual');
+        Expect.that(EqualsOneInstanceA)
+            .shouldEqual(EqualsOneInstanceA, 'ShouldEqual');
     }
 
     private class StrictlyNonEqualObjects extends ThrowCheck {
@@ -28,7 +29,8 @@ public class ExpectObject_Tests {
             Expect.that(EqualsOneInstanceA).shouldEqual(EqualsOneInstanceB);
         }
         protected override void testCase(String message) {
-            Expect.that(EqualsOneInstanceA).shouldEqual(EqualsOneInstanceB, message);
+            Expect.that(EqualsOneInstanceA)
+                .shouldEqual(EqualsOneInstanceB, message);
         }
     }
 
@@ -40,8 +42,10 @@ public class ExpectObject_Tests {
 
     @isTest
     static void ExpectEquivalentObjectsShouldNotThrowWhenCheckingEquivalance() {
-        Expect.that(EqualsOneInstanceA).shouldBeEquivalentTo(EqualsOneInstanceB);
-        Expect.that(EqualsOneInstanceA).shouldBeEquivalentTo(EqualsOneInstanceB, 'Equivalent');
+        Expect.that(EqualsOneInstanceA)
+            .shouldBeEquivalentTo(EqualsOneInstanceB);
+        Expect.that(EqualsOneInstanceA)
+            .shouldBeEquivalentTo(EqualsOneInstanceB, 'Equivalent');
     }
 
     private class ShouldBeEquivalentToThrows extends ThrowCheck {
@@ -49,14 +53,22 @@ public class ExpectObject_Tests {
             Expect.that(EqualsOneInstanceA).shouldBeEquivalentTo(EqualsTwo);
         }
         protected override void testCase(String message) {
-            Expect.that(EqualsOneInstanceA).shouldBeEquivalentTo(EqualsTwo, message);
+            Expect.that(EqualsOneInstanceA)
+                .shouldBeEquivalentTo(EqualsTwo, message);
         }
     }
 
     @isTest
     static void ExpectShouldBeEquivalentThrows() {
-        new ShouldBeEquivalentToThrows().verifyMessage('Expected ' + String.valueOf(EqualsOneInstanceA) + ' should be ' + String.valueOf(EqualsTwo));
-        new ShouldBeEquivalentToThrows().verifyCustomMessage('ShouldBeEquivalent');
+        new ShouldBeEquivalentToThrows()
+            .verifyMessage(
+                'Expected ' +
+                String.valueOf(EqualsOneInstanceA) +
+                ' should be ' +
+                String.valueOf(EqualsTwo)
+            );
+        new ShouldBeEquivalentToThrows()
+            .verifyCustomMessage('ShouldBeEquivalent');
     }
 
     @isTest
@@ -66,16 +78,20 @@ public class ExpectObject_Tests {
 
     @isTest
     static void ExpectSObjectsExposesAndIt() {
-        Expect.that(EqualsOneInstanceA).shouldEqual(EqualsOneInstanceA).andIt.negated.shouldEqual(EqualsOneInstanceB);
+        Expect.that(EqualsOneInstanceA)
+            .shouldEqual(EqualsOneInstanceA)
+            .andIt.negated.shouldEqual(EqualsOneInstanceB);
     }
 
     private class NotEqualObject extends ThrowCheck {
         protected override void testCase() {
-            Expect.that(EqualsOneInstanceA).negated.shouldEqual(EqualsOneInstanceA);
+            Expect.that(EqualsOneInstanceA)
+                .negated.shouldEqual(EqualsOneInstanceA);
         }
 
         protected override void testCase(String message) {
-            Expect.that(EqualsOneInstanceA).negated.shouldEqual(EqualsOneInstanceA, message);
+            Expect.that(EqualsOneInstanceA)
+                .negated.shouldEqual(EqualsOneInstanceA, message);
         }
     }
 
@@ -88,15 +104,18 @@ public class ExpectObject_Tests {
     @isTest
     static void ExpectShouldNotBeEquivalentDoesNotThrow() {
         Expect.that(EqualsOneInstanceA).negated.shouldBeEquivalentTo(EqualsTwo);
-        Expect.that(EqualsOneInstanceA).negated.shouldBeEquivalentTo(EqualsTwo, 'NotEquivalent');
+        Expect.that(EqualsOneInstanceA)
+            .negated.shouldBeEquivalentTo(EqualsTwo, 'NotEquivalent');
     }
 
     private class ShouldNotBeEquivalentThrows extends ThrowCheck {
         protected override void testCase() {
-            Expect.that(EqualsOneInstanceA).negated.shouldBeEquivalentTo(EqualsOneInstanceB);
+            Expect.that(EqualsOneInstanceA)
+                .negated.shouldBeEquivalentTo(EqualsOneInstanceB);
         }
         protected override void testCase(String message) {
-            Expect.that(EqualsOneInstanceA).negated.shouldBeEquivalentTo(EqualsOneInstanceB, message);
+            Expect.that(EqualsOneInstanceA)
+                .negated.shouldBeEquivalentTo(EqualsOneInstanceB, message);
         }
     }
 

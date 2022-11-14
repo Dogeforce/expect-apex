@@ -8,11 +8,15 @@ public class ExpectError {
     }
 
     public ExpectStringDecorator andErrorMessage {
-        get { return new ExpectStringDecorator(errorMessage, this); }
+        get {
+            return new ExpectStringDecorator(errorMessage, this);
+        }
     }
 
     public ExpectStringDecorator andErrorType {
-        get { return new ExpectStringDecorator(errorType, this); }
+        get {
+            return new ExpectStringDecorator(errorType, this);
+        }
     }
 
     public class ExpectStringDecorator {
@@ -31,16 +35,25 @@ public class ExpectError {
             this.parent = parent;
         }
         public ExpectStringDecorator andErrorMessage {
-            get { return wrapped.andErrorMessage; }
+            get {
+                return wrapped.andErrorMessage;
+            }
         }
         public ExpectStringDecorator andErrorType {
-            get { return wrapped.andErrorType; }
+            get {
+                return wrapped.andErrorType;
+            }
         }
-        public ExpectStringDecorator shouldEqualIgnoreOrdinalCase(String actual) {
+        public ExpectStringDecorator shouldEqualIgnoreOrdinalCase(
+            String actual
+        ) {
             wrappedString.shouldEqualIgnoreOrdinalCase(actual);
             return parent;
         }
-        public ExpectStringDecorator shouldEqualIgnoreOrdinalCase(String actual, String message) {
+        public ExpectStringDecorator shouldEqualIgnoreOrdinalCase(
+            String actual,
+            String message
+        ) {
             wrappedString.shouldEqualIgnoreOrdinalCase(actual, message);
             return parent;
         }
@@ -48,7 +61,10 @@ public class ExpectError {
             wrappedString.shouldContain(actual);
             return parent;
         }
-        public ExpectStringDecorator shouldContain(String actual, String message) {
+        public ExpectStringDecorator shouldContain(
+            String actual,
+            String message
+        ) {
             wrappedString.shouldContain(actual, message);
             return parent;
         }
@@ -56,7 +72,10 @@ public class ExpectError {
             wrappedString.shouldEqual(actual);
             return parent;
         }
-        public ExpectStringDecorator shouldEqual(String actual, String message) {
+        public ExpectStringDecorator shouldEqual(
+            String actual,
+            String message
+        ) {
             wrappedString.shouldEqual(actual, message);
             return parent;
         }

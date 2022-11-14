@@ -1,18 +1,28 @@
-# Salesforce DX Project: Next Steps
+# Expect Apex
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Expect Apex is a framework to write more readable assertions in Apex, with explicit intent of verifying a result.
 
-## How Do You Plan to Deploy Your Changes?
+To begin, an expect statement should start with the global class `Expect`, and it follows the syntax of "expect that something is/equals another thing". For example: "expect that boolean variable equals true".
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+A standard Apex assertion might look like this:
 
-## Configure Your Salesforce DX Project
+```apex
+Boolean b = true;
+System.assertEquals(b, 'It should have been true.');
+```
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+But with this framework the assertion becomes:
 
-## Read All About It
+```apex
+Expect.that(b).shouldBeTrue();
+// or
+Expect.that(b).shouldEqual(true);
+```
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+For numeric and more advanced types, it is possible to use the `andIt` method to make multiple assertions at once:
+
+```apex
+Expect.that(integerValue).shouldBeGreaterThan(0).andIt.shouldBeLessThan(5);
+// Which is also the equivalent to:
+Expect.that(integerValue).shouldBeBetween(0, 5);
+```

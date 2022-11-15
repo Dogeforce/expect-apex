@@ -4,13 +4,16 @@ public class ExpectSObjectType extends Expect {
     public ExpectSObjectType(SObjectType expected) {
         this.expected = expected;
     }
+
     private ExpectSObjectType(ExpectSObjectType existingInstance) {
         super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
     }
+
     protected override String getExpectedAsString() {
         return String.valueOf(expected);
     }
+
     private Boolean isRecord() {
         SObject[] records = Database.query(
             'select Id from ' +
@@ -19,19 +22,23 @@ public class ExpectSObjectType extends Expect {
         );
         return records.size() > 0;
     }
+
     public ExpectSObjectType shouldHaveRecords() {
         shouldHaveRecords(formatMessage(SHOULD_HAVE_RECORDS, null));
         return (ExpectSObjectType) parentInstance;
     }
+
     public ExpectSObjectType shouldHaveRecords(String message) {
         assertNegatable(isRecord(), message);
         return (ExpectSObjectType) parentInstance;
     }
+
     public ExpectSObjectType andIt {
         get {
             return (ExpectSObjectType) parentInstance;
         }
     }
+
     public ExpectSObjectType negated {
         get {
             return new ExpectSObjectType(this);

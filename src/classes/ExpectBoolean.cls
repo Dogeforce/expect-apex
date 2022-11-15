@@ -3,6 +3,7 @@ public class ExpectBoolean extends Expect {
     public ExpectBoolean(Boolean expected) {
         this.expected = expected;
     }
+
     private ExpectBoolean(ExpectBoolean existingInstance) {
         super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
@@ -42,6 +43,7 @@ public class ExpectBoolean extends Expect {
         assertNegatable(this.expected == actual, message);
         return (ExpectBoolean) parentInstance;
     }
+
     public ExpectBoolean negated {
         get {
             return new ExpectBoolean(this);

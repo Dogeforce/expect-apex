@@ -4,6 +4,7 @@ public class ExpectId extends Expect {
     public ExpectId(Id expected) {
         this.expected = expected;
     }
+
     private ExpectId(ExpectId existingInstance) {
         super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
@@ -18,31 +19,38 @@ public class ExpectId extends Expect {
     protected override String getExpectedAsString() {
         return String.valueOf(expected);
     }
+
     private ExpectId assertThis(Boolean test, String message) {
         assertNegatable(test, message);
         return (ExpectId) parentInstance;
     }
+
     public ExpectId shouldEqual(Id actual) {
         return shouldEqual(
             actual,
             formatMessage(SHOULD_BE_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectId shouldEqual(Id actual, String message) {
         return assertThis(expected == actual, message);
     }
+
     public ExpectId shouldBeLessThan(Id actual, string message) {
         return assertThis(expected < actual, message);
     }
+
     public ExpectId shouldBeLessThan(Id actual) {
         return shouldBeLessThan(
             actual,
             formatMessage(SHOULD_BE_LESS_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectId shouldBeLessThanOrEqualTo(Id actual, string message) {
         return assertThis(expected <= actual, message);
     }
+
     public ExpectId shouldBeLessThanOrEqualTo(Id actual) {
         return shouldBeLessThanOrEqualTo(
             actual,
@@ -52,18 +60,22 @@ public class ExpectId extends Expect {
             )
         );
     }
+
     public ExpectId shouldBeGreaterThan(Id actual, string message) {
         return assertThis(expected > actual, message);
     }
+
     public ExpectId shouldBeGreaterThan(Id actual) {
         return shouldBeGreaterThan(
             actual,
             formatMessage(SHOULD_BE_GREATER_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectId shouldBeGreaterThanOrEqualTo(Id actual, string message) {
         return assertThis(expected >= actual, message);
     }
+
     public ExpectId shouldBeGreaterThanOrEqualTo(Id actual) {
         return shouldBeGreaterThanOrEqualTo(
             actual,
@@ -73,6 +85,7 @@ public class ExpectId extends Expect {
             )
         );
     }
+
     public ExpectId shouldBeBetween(Id rangeStart, Id rangeEnd) {
         return shouldBeBetween(
             rangeStart,
@@ -83,6 +96,7 @@ public class ExpectId extends Expect {
             )
         );
     }
+
     public ExpectId shouldBeBetween(
         Id rangeStart,
         Id rangeEnd,
@@ -94,6 +108,7 @@ public class ExpectId extends Expect {
 
         return assertThis(testedBetween, message);
     }
+
     public ExpectId andIt {
         get {
             return (ExpectId) parentInstance;

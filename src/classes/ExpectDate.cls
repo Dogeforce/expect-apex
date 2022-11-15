@@ -4,6 +4,7 @@ public class ExpectDate extends Expect {
     public ExpectDate(Date expected) {
         this.expected = expected;
     }
+
     private ExpectDate(ExpectDate existingInstance) {
         super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
@@ -18,31 +19,38 @@ public class ExpectDate extends Expect {
     protected override String getExpectedAsString() {
         return String.valueOf(expected);
     }
+
     private ExpectDate assertThis(Boolean test, String message) {
         assertNegatable(test, message);
         return (ExpectDate) parentInstance;
     }
+
     public ExpectDate shouldEqual(Date actual) {
         return shouldEqual(
             actual,
             formatMessage(SHOULD_BE_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectDate shouldEqual(Date actual, String message) {
         return assertThis(expected == actual, message);
     }
+
     public ExpectDate shouldBeLessThan(Date actual, string message) {
         return assertThis(expected < actual, message);
     }
+
     public ExpectDate shouldBeLessThan(Date actual) {
         return shouldBeLessThan(
             actual,
             formatMessage(SHOULD_BE_LESS_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectDate shouldBeLessThanOrEqualTo(Date actual, string message) {
         return assertThis(expected <= actual, message);
     }
+
     public ExpectDate shouldBeLessThanOrEqualTo(Date actual) {
         return shouldBeLessThanOrEqualTo(
             actual,
@@ -52,21 +60,25 @@ public class ExpectDate extends Expect {
             )
         );
     }
+
     public ExpectDate shouldBeGreaterThan(Date actual, string message) {
         return assertThis(expected > actual, message);
     }
+
     public ExpectDate shouldBeGreaterThan(Date actual) {
         return shouldBeGreaterThan(
             actual,
             formatMessage(SHOULD_BE_GREATER_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectDate shouldBeGreaterThanOrEqualTo(
         Date actual,
         string message
     ) {
         return assertThis(expected >= actual, message);
     }
+
     public ExpectDate shouldBeGreaterThanOrEqualTo(Date actual) {
         return shouldBeGreaterThanOrEqualTo(
             actual,
@@ -76,6 +88,7 @@ public class ExpectDate extends Expect {
             )
         );
     }
+
     public ExpectDate shouldBeBetween(Date rangeStart, Date rangeEnd) {
         return shouldBeBetween(
             rangeStart,
@@ -86,6 +99,7 @@ public class ExpectDate extends Expect {
             )
         );
     }
+
     public ExpectDate shouldBeBetween(
         Date rangeStart,
         Date rangeEnd,
@@ -97,6 +111,7 @@ public class ExpectDate extends Expect {
 
         return assertThis(testedBetween, message);
     }
+
     public ExpectDate andIt {
         get {
             return (ExpectDate) parentInstance;

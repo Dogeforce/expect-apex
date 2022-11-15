@@ -3,6 +3,7 @@ public abstract class Expect {
         private ExpectNegation() {
         }
     }
+
     protected final Boolean negate;
     protected final Expect parentInstance;
     public static Boolean useSystemAssert = true;
@@ -19,13 +20,16 @@ public abstract class Expect {
         negate = false;
         parentInstance = this;
     }
+
     protected Expect(boolean negatedState) {
         negate = negatedState;
     }
+
     protected Expect(ExpectNegation forceNegated, Expect parent) {
         negate = true;
         parentInstance = parent;
     }
+
     protected abstract String getExpectedAsString();
 
     private string shouldOrShouldNot {

@@ -4,6 +4,7 @@ public class ExpectSObject extends Expect {
     public ExpectSObject(SObject expected) {
         this.expected = expected;
     }
+
     private ExpectSObject(ExpectSObject existingInstance) {
         super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;

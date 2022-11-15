@@ -12,9 +12,11 @@ public abstract class ThrowCheck {
         }
         return null;
     }
+
     public void verifyMessage(string expectedMessage) {
         System.assertEquals(expectedMessage, this.verify());
     }
+
     public void verifyCustomMessage(string expectedMessage) {
         Expect.useSystemAssert = false;
         try {

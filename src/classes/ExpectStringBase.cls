@@ -4,6 +4,7 @@ public abstract class ExpectStringBase extends Expect {
     protected ExpectStringBase(String expected) {
         this.expected = expected;
     }
+
     protected ExpectStringBase(ExpectString existingInstance) {
         super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
@@ -18,34 +19,41 @@ public abstract class ExpectStringBase extends Expect {
     protected override String getExpectedAsString() {
         return String.valueOf(expected);
     }
+
     protected ExpectString assertThis(Boolean test, String message) {
         assertNegatable(test, message);
         return (ExpectString) parentInstance;
     }
+
     public ExpectString shouldEqual(String actual) {
         return shouldEqual(
             actual,
             formatMessage(SHOULD_BE_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectString shouldEqual(String actual, String message) {
         return assertThis(expected.equals(actual), message);
     }
+
     public ExpectString shouldBeLessThan(String actual, string message) {
         return assertThis(expected < actual, message);
     }
+
     public ExpectString shouldBeLessThan(String actual) {
         return shouldBeLessThan(
             actual,
             formatMessage(SHOULD_BE_LESS_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectString shouldBeLessThanOrEqualTo(
         String actual,
         string message
     ) {
         return assertThis(expected <= actual, message);
     }
+
     public ExpectString shouldBeLessThanOrEqualTo(String actual) {
         return shouldBeLessThanOrEqualTo(
             actual,
@@ -55,21 +63,25 @@ public abstract class ExpectStringBase extends Expect {
             )
         );
     }
+
     public ExpectString shouldBeGreaterThan(String actual, string message) {
         return assertThis(expected > actual, message);
     }
+
     public ExpectString shouldBeGreaterThan(String actual) {
         return shouldBeGreaterThan(
             actual,
             formatMessage(SHOULD_BE_GREATER_MESSAGE, String.valueOf(actual))
         );
     }
+
     public ExpectString shouldBeGreaterThanOrEqualTo(
         String actual,
         string message
     ) {
         return assertThis(expected >= actual, message);
     }
+
     public ExpectString shouldBeGreaterThanOrEqualTo(String actual) {
         return shouldBeGreaterThanOrEqualTo(
             actual,
@@ -79,6 +91,7 @@ public abstract class ExpectStringBase extends Expect {
             )
         );
     }
+
     public ExpectString shouldBeBetween(String rangeStart, String rangeEnd) {
         return shouldBeBetween(
             rangeStart,
@@ -89,6 +102,7 @@ public abstract class ExpectStringBase extends Expect {
             )
         );
     }
+
     public ExpectString shouldBeBetween(
         String rangeStart,
         String rangeEnd,
@@ -100,6 +114,7 @@ public abstract class ExpectStringBase extends Expect {
 
         return assertThis(testedBetween, message);
     }
+
     public ExpectString andIt {
         get {
             return (ExpectString) parentInstance;

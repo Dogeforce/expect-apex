@@ -2,6 +2,7 @@ public class ExpectString extends ExpectStringBase {
     public ExpectString(string s) {
         super(s);
     }
+
     public ExpectString(ExpectString parent) {
         super(parent);
     }

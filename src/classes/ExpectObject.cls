@@ -6,7 +6,7 @@ public class ExpectObject extends Expect {
     }
 
     private ExpectObject(ExpectObject existingInstance) {
-        super(NegatedAssert, existingInstance);
+        super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
     }
 

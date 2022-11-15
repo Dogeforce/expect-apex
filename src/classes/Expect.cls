@@ -3,17 +3,17 @@ public abstract class Expect {
         private ExpectNegation() {
         }
     }
-    public static Boolean UseSystemAssert = true;
-    public static final String SHOULD_BE_MESSAGE = 'Expected {0} {1} be {2}';
-    public static final String SHOULD_BE_LESS_MESSAGE = 'Expected {0} {1} be less than {2}';
-    public static final String SHOULD_BE_LESS_OR_EQUAL_MESSAGE = 'Expected {0} {1} be less than or equal to {2}';
+    protected final Boolean negate;
+    protected final Expect parentInstance;
+    public static Boolean useSystemAssert = true;
+    public static final ExpectNegation NEGATED_ASSERT = new ExpectNegation();
+    public static final String SHOULD_BE_BETWEEN_MESSAGE = 'Expected {0} {1} be between {2} and {3}';
     public static final String SHOULD_BE_GREATER_MESSAGE = 'Expected {0} {1} be greater than {2}';
     public static final String SHOULD_BE_GREATER_OR_EQUAL_MESSAGE = 'Expected {0} {1} be greater than or equal to {2}';
-    private static final String SHOULD_BE_BETWEEN_MESSAGE = 'Expected {0} {1} be between {2} and {3}';
+    public static final String SHOULD_BE_LESS_MESSAGE = 'Expected {0} {1} be less than {2}';
+    public static final String SHOULD_BE_LESS_OR_EQUAL_MESSAGE = 'Expected {0} {1} be less than or equal to {2}';
+    public static final String SHOULD_BE_MESSAGE = 'Expected {0} {1} be {2}';
     public static final String SHOULD_CONTAIN_MESSAGE = 'Expected {0} {1} contain {2}';
-    protected final Boolean negate;
-    public static final ExpectNegation NegatedAssert = new ExpectNegation();
-    protected final Expect parentInstance;
 
     protected Expect() {
         negate = false;
@@ -39,7 +39,7 @@ public abstract class Expect {
 
     protected void assertNegatable(Boolean testResult, String message) {
         Boolean expected = negate ? !testResult : testResult;
-        if (UseSystemAssert) {
+        if (useSystemAssert) {
             System.assert(expected, message);
         } else if (!expected) {
             throw new Expect.AssertException(message);
@@ -56,6 +56,10 @@ public abstract class Expect {
 
     public static ExpectInteger that(Integer expected) {
         return new ExpectInteger(expected);
+    }
+
+    public static ExpectDecimal that(Decimal expected) {
+        return new ExpectDecimal(expected);
     }
 
     public static ExpectString that(String expected) {

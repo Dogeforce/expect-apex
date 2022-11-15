@@ -5,7 +5,7 @@ public class ExpectSObjectType extends Expect {
         this.expected = expected;
     }
     private ExpectSObjectType(ExpectSObjectType existingInstance) {
-        super(NegatedAssert, existingInstance);
+        super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
     }
     protected override String getExpectedAsString() {

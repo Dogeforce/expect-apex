@@ -5,7 +5,7 @@ public class ExpectId extends Expect {
         this.expected = expected;
     }
     private ExpectId(ExpectId existingInstance) {
-        super(NegatedAssert, existingInstance);
+        super(NEGATED_ASSERT, existingInstance);
         this.expected = existingInstance.expected;
     }
 

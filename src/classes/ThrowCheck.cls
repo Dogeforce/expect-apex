@@ -3,7 +3,7 @@ public abstract class ThrowCheck {
     protected abstract void testCase();
     protected abstract void testCase(string message);
     public string verify() {
-        Expect.UseSystemAssert = false;
+        Expect.useSystemAssert = false;
         try {
             testCase();
             System.assert(false, ASSERTION_MESSAGE);
@@ -16,7 +16,7 @@ public abstract class ThrowCheck {
         System.assertEquals(expectedMessage, this.verify());
     }
     public void verifyCustomMessage(string expectedMessage) {
-        Expect.UseSystemAssert = false;
+        Expect.useSystemAssert = false;
         try {
             testCase(expectedMessage);
             System.assert(false, ASSERTION_MESSAGE);
